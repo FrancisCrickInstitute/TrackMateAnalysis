@@ -86,6 +86,7 @@ The notebook walks through, in order:
 3. Reconstructing trajectories from the spots table.
 4. Computing instantaneous speed between consecutive frames.
 5. Computing mean-squared displacement (MSD) per track.
+6. Exploring per-spot shape features such as area and circularity.
 
 Each section builds a reusable function (e.g. `read_trackmate_csv`, `track_msd`)
 that you can copy into your own analysis.
