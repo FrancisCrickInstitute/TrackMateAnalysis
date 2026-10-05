@@ -7,8 +7,9 @@ Guidance for AI agents (and contributors) working in this repository.
 This is an educational repository: a single Jupyter notebook
 (`trackmate_analysis_intro.ipynb`) that teaches how to analyse
 [TrackMate](https://imagej.net/plugins/trackmate/) tracking exports with Python.
-It covers track statistics, trajectories, instantaneous speed, and
-mean-squared displacement (MSD).
+It covers track statistics, trajectories, instantaneous speed,
+mean-squared displacement (MSD), and per-spot shape features (morphology), with
+an explicit spatial/temporal calibration step.
 
 The analysis is deliberately **generic**: it only relies on the standard
 columns TrackMate always writes, so it must work with any TrackMate export, not

@@ -81,12 +81,13 @@ Two tables are exported:
 The notebook walks through, in order:
 
 1. Loading TrackMate's spots/tracks CSVs and understanding their layout.
-2. Track-level statistics: duration, mean speed and confinement-ratio
+2. Setting spatial and temporal calibration (pixel size and frame interval).
+3. Track-level statistics: duration, mean speed and confinement-ratio
    distributions.
-3. Reconstructing trajectories from the spots table.
-4. Computing instantaneous speed between consecutive frames.
-5. Computing mean-squared displacement (MSD) per track.
-6. Exploring per-spot shape features such as area and circularity.
+4. Reconstructing trajectories from the spots table.
+5. Computing instantaneous speed between consecutive frames.
+6. Computing mean-squared displacement (MSD) per track.
+7. Exploring per-spot shape features such as area and circularity.
 
 Each section builds a reusable function (e.g. `read_trackmate_csv`, `track_msd`)
 that you can copy into your own analysis.
