@@ -25,14 +25,18 @@ TrackMate export.
 
 ## Prerequisites
 
-- [pixi](https://pixi.sh/latest/#installation) (manages Python and the
-  packages below in one command)
+- [pixi](https://pixi.sh/latest/#installation) **or**
+  [conda](https://docs.conda.io/en/latest/miniconda.html) (either manages
+  Python and the packages below)
 - A TrackMate export (see [Exporting data from TrackMate](#exporting-data-from-trackmate))
 
-The notebook needs `pandas`, `numpy`, `matplotlib`, `seaborn` and `jupyter`;
-these are declared in `pixi.toml`, so you do not need to install them by hand.
+The notebook needs `pandas`, `numpy`, `matplotlib`, `seaborn` and `jupyter`.
+Both setup methods below install these for you, so you do not need to install
+them by hand.
 
 ## Setup
+
+### With pixi
 
 From the repository root:
 
@@ -43,6 +47,19 @@ pixi run jupyter  # start Jupyter Lab
 
 Then open `trackmate_analysis_intro.ipynb` and select the `trackmate-analysis`
 kernel.
+
+### With conda
+
+Create and activate an environment, then launch Jupyter Lab:
+
+```sh
+conda create -n trackmate-analysis -c conda-forge python=3.14 pandas numpy matplotlib seaborn jupyterlab
+conda activate trackmate-analysis
+jupyter lab
+```
+
+Then open `trackmate_analysis_intro.ipynb` and select the kernel for your
+`trackmate-analysis` environment.
 
 ## Exporting data from TrackMate
 
