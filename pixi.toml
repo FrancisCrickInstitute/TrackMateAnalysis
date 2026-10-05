@@ -13,3 +13,10 @@ pixi-pycharm = ">=0.0.12,<0.0.13"
 
 [environments]
 trackmate-analysis = ["default"]
+
+[pypi-dependencies]
+jupyter = ">=1.1.1, <2"
+matplotlib = ">=3.11.2, <4"
+pandas = ">=3.0.6, <4"
+numpy = ">=2.5.3, <3"
+seaborn = ">=0.13.2, <0.14"
