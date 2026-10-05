@@ -61,6 +61,22 @@ jupyter lab
 Then open `trackmate_analysis_intro.ipynb` and select the kernel for your
 `trackmate-analysis` environment.
 
+## Try it with Binder
+
+[Binder](https://mybinder.org/) builds and launches a live Jupyter environment
+from this repository in your browser, so you can run the notebook without
+installing anything locally.
+
+Click the **Binder** badge at the top of this page to open
+`trackmate_analysis_intro.ipynb` directly. Binder creates the environment from
+[`requirements.txt`](requirements.txt) (and supplies Jupyter automatically), so
+the notebook's `pandas`, `numpy`, `matplotlib` and `seaborn` dependencies are
+already present.
+
+Binder is great for quickly trying the tutorial, but for your own data you will
+still want a local environment (see [Setup](#setup)) so you can point the
+notebook at your own TrackMate exports.
+
 ## Exporting data from TrackMate
 
 In Fiji, after running TrackMate, use the analysis panel to export the tables as
