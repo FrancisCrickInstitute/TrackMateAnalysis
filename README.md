@@ -1,5 +1,7 @@
 # TrackMateAnalysis
 
+[![Python 3.14](https://img.shields.io/badge/python-3.14-blue.svg)](https://www.python.org/downloads/) [![Built with Pixi](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json)](https://pixi.sh) ![Commit activity](https://img.shields.io/github/commit-activity/y/FrancisCrickInstitute/TrackMateAnalysis?style=plastic) ![GitHub](https://img.shields.io/github/license/FrancisCrickInstitute/TrackMateAnalysis?color=green&style=plastic)
+
 A gentle, **generic** introduction to analysing the output of a
 [TrackMate](https://imagej.net/plugins/trackmate/) tracking run with Python and
 [Jupyter](https://jupyter.org/).
