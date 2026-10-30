@@ -77,6 +77,22 @@ Binder is great for quickly trying the tutorial, but for your own data you will
 still want a local environment (see [Setup](#setup)) so you can point the
 notebook at your own TrackMate exports.
 
+## Your first analysis (5 minutes)
+
+1. Export your TrackMate tables as CSVs (see
+   [Exporting data from TrackMate](#exporting-data-from-trackmate)) and put
+   them in a folder.
+2. Open `trackmate_analysis_intro.ipynb` and, in the **YOUR SETTINGS** cell near
+   the top, set `DATA_DIR` to that folder.
+3. Run the notebook top-to-bottom (**Kernel -> Run All**).
+4. Scroll to the **Try it yourself** section and change the metric name inside a
+   `plot_track_metric(...)` or `scatter_track_metrics(...)` call to explore your
+   data.
+
+You only need to edit two things: the **settings** at the top, and the **metric
+names** in the `plot_track_metric(...)` / `scatter_track_metrics(...)` calls.
+The analysis code itself can stay as it is.
+
 ## Exporting data from TrackMate
 
 In Fiji, after running TrackMate, use the analysis panel to export the tables as
@@ -115,20 +131,35 @@ Two tables are exported:
 
 The notebook walks through, in order:
 
-1. Loading TrackMate's spots/tracks CSVs and understanding their layout.
-2. Setting spatial and temporal calibration (pixel size and frame interval).
-3. Track-level statistics: duration, mean speed and confinement-ratio
-   distributions.
-4. Reconstructing trajectories from the spots table.
-5. Computing instantaneous speed between consecutive frames.
-6. Computing mean-squared displacement (MSD) per track.
-7. Exploring per-spot shape features such as area and circularity.
+1. Pointing the notebook at your data and optionally filtering out short or
+   low-quality tracks.
+2. Loading TrackMate's spots/tracks CSVs and understanding their layout.
+3. Setting spatial and temporal calibration (pixel size and frame interval).
+4. Plotting any track metric from a friendly menu (duration, mean speed,
+   confinement ratio, and more).
+5. Reconstructing trajectories from the spots table.
+6. Computing instantaneous speed between consecutive frames.
+7. Computing mean-squared displacement (MSD) per track.
+8. Exploring per-spot shape features such as area and circularity.
+9. A "Try it yourself" section with ready-to-edit examples.
 
-Each section builds a reusable function (e.g. `read_trackmate_csv`, `track_msd`)
-that you can copy into your own analysis.
+Each section builds a reusable function (e.g. `read_trackmate_csv`,
+`track_msd`, `plot_track_metric`) that you can copy into your own analysis.
+
+## Where do I change things?
+
+| I want to... | Do this |
+|---|---|
+| Use my own data | Change `DATA_DIR` in the **YOUR SETTINGS** cell |
+| Ignore very short tracks | Set `MIN_TRACK_DURATION` (seconds) in the settings cell |
+| Ignore low-quality tracks | Set `MIN_TRACK_QUALITY` in the settings cell |
+| Plot a different metric | Change the name in `plot_track_metric("...")` |
+| Compare two metrics | Change the names in `scatter_track_metrics("...", "...")` |
+| Colour a scatter by another metric | Add `color_metric="..."` to the scatter call |
 
 ## Next steps
 
-The notebook ends with pointers for extending the analysis, including comparing
+The notebook's **Try it yourself** section is the best place to start
+experimenting. From there, the summary cell points to further ideas: comparing
 conditions, filtering tracks by duration/quality, plotting channel intensities
 over time, and statistical testing.
