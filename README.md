@@ -62,6 +62,9 @@ them by hand.
 2. Unzip the archive (for example into your home folder or on your Desktop).
 3. Open a terminal and move into the unzipped folder:
 
+   - **Windows**: open the **Anaconda Prompt** (installed with Miniconda).
+   - **macOS** or **Linux**: open the **Terminal** app.
+
    ```sh
    cd TrackMateAnalysis-main
    ```
