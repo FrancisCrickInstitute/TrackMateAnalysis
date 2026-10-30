@@ -18,12 +18,11 @@ TrackMate export.
 
 ## Lessons
 
-The notebook is organised as four short lessons, and it starts from the example
-data that ships in this repository, so you can begin without exporting anything.
+The notebook is organised as four short lessons, and it starts from the included
+example data, so you can begin without exporting anything.
 
-1. **Set up and run on the example data** - follow [Setup](#setup), open the
-   notebook, and run it top-to-bottom. It already points at the data in
-   `example_input/`.
+1. **Set up and run on the example data** - install Miniconda, get the code,
+   then run the notebook. It already points at the data in `example_input/`.
 2. **Make new plots from the example data** - use the metric menu and the
    **Try it yourself** section to plot different quantities, including how a
    spot's area (a proxy for size) changes over time and how fast that change
@@ -35,7 +34,7 @@ data that ships in this repository, so you can begin without exporting anything.
    [Using data from other sources](#using-data-from-other-sources) for the few
    column names the notebook needs.
 
-## Repository contents
+## What's in this folder
 
 | File | Purpose |
 |---|---|
@@ -44,33 +43,41 @@ data that ships in this repository, so you can begin without exporting anything.
 
 ## Prerequisites
 
-- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (recommended)
-  **or** [pixi](https://pixi.sh/latest/#installation) - either manages Python
-  and the packages below
-- TrackMate CSV exports (see
-  [Exporting data from TrackMate](#exporting-data-from-trackmate)). The notebook
-  expects TrackMate's CSV format, not arbitrary CSVs.
+A computer with an internet connection. You don't need any prior Python or
+terminal experience - the steps below install and set up everything for you, and
+the example data comes included.
 
-The notebook needs `pandas`, `numpy`, `matplotlib`, `seaborn` and `jupyter`.
-Both setup methods below install these for you, so you do not need to install
-them by hand.
+You only need your own TrackMate export once you want to analyse your own data
+(see [Exporting data from TrackMate](#exporting-data-from-trackmate)).
+
+## Install Miniconda
+
+Miniconda installs Python and the `conda` command used below.
+
+1. Go to the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
+2. Download the installer for your operating system and run it.
+3. Accept the default settings and finish the installation.
+
+If you already use [pixi](https://pixi.sh/latest/#installation), you can skip
+this section and use the pixi instructions in [Setup](#setup) instead.
 
 ## Get the code
 
-1. Download the repository as a ZIP archive: on the GitHub page click the green
-   **Code** button, then **Download ZIP**.
-2. Unzip the archive (for example into your home folder or on your Desktop).
-3. Open a terminal and move into the unzipped folder:
-
-   - **Windows**: open the **Anaconda Prompt** (installed with Miniconda).
-   - **macOS** or **Linux**: open the **Terminal** app.
-
-   ```sh
-   cd TrackMateAnalysis-main
-   ```
-
-   If you unzipped it elsewhere, replace `TrackMateAnalysis-main` with the full
-   path to that folder.
+1. On the GitHub page, click the green **Code** button, then **Download ZIP**.
+   This downloads a file called `TrackMateAnalysis-main.zip`, usually into your
+   **Downloads** folder.
+2. Extract the ZIP file:
+   - **Windows**: right-click the `.zip` file and choose **Extract All...**,
+     then **Extract**.
+   - **macOS**: double-click the `.zip` file.
+   This creates a folder called `TrackMateAnalysis-main`.
+3. Open a terminal and move into that folder:
+   - **Windows**: open the **Anaconda Prompt** (from the Start menu). Type
+     `cd ` (with a trailing space), then drag the `TrackMateAnalysis-main`
+     folder from File Explorer into the window, and press Enter.
+   - **macOS** or **Linux**: open the **Terminal** app. Type `cd ` (with a
+     trailing space), then drag the `TrackMateAnalysis-main` folder from Finder
+     into the window, and press Enter.
 
 All of the commands in [Setup](#setup) below are run from inside this folder.
 
@@ -78,7 +85,9 @@ All of the commands in [Setup](#setup) below are run from inside this folder.
 
 ### With Miniconda (recommended)
 
-Create and activate an environment, then launch Jupyter Lab:
+Run these three commands one at a time (you can copy and paste each one). They
+create a private copy of Python with the packages this notebook needs, activate
+it, and start Jupyter Lab (a program that runs in your browser):
 
 ```sh
 conda create -n trackmate-analysis -c conda-forge python=3.14 pandas numpy matplotlib seaborn jupyterlab
@@ -86,12 +95,14 @@ conda activate trackmate-analysis
 jupyter lab
 ```
 
-Then open `trackmate_analysis_intro.ipynb` and select the kernel for your
-`trackmate-analysis` environment.
+A browser window opens showing Jupyter Lab. Double-click
+`trackmate_analysis_intro.ipynb` (this file is "the notebook"), then make sure
+the kernel shown in the top-right is set to `trackmate-analysis`. The kernel is
+the Python that runs the notebook.
 
 ### With pixi
 
-From the repository root:
+From the `TrackMateAnalysis-main` folder:
 
 ```sh
 pixi install      # create the environment and install all dependencies
@@ -99,7 +110,7 @@ pixi run jupyter  # start Jupyter Lab
 ```
 
 Then open `trackmate_analysis_intro.ipynb` and select the `trackmate-analysis`
-kernel.
+kernel (top-right of the notebook).
 
 ## Try it with Binder
 
@@ -130,10 +141,11 @@ SETTINGS** cell to that folder (for example `/content/`).
 
 ## Your first analysis (5 minutes)
 
-1. Follow [Setup](#setup) to install Python and start Jupyter.
-2. Open `trackmate_analysis_intro.ipynb` and run it top-to-bottom
-   (**Kernel -> Run All**). It already points at the example data in
-   `example_input/`, so no changes are needed.
+1. Follow [Install Miniconda](#install-miniconda), [Get the code](#get-the-code)
+   and [Setup](#setup) to install Python and start Jupyter Lab.
+2. In Jupyter Lab, double-click `trackmate_analysis_intro.ipynb` and run the
+   whole notebook (**Run -> Run All Cells**). It already points at the example
+   data in `example_input/`, so no changes are needed.
 3. Scroll to the **Try it yourself** section and change the metric name inside a
    `plot_track_metric(...)` or `scatter_track_metrics(...)` call to explore the
    example data.
@@ -146,7 +158,7 @@ the **settings** and the **metric names**; the analysis code can stay as it is.
 ## Exporting data from TrackMate
 
 In Fiji, after running TrackMate, use the analysis panel to export the tables as
-CSV:
+CSV files (a CSV is a plain-text table file):
 
 1. Export the **spots** table, saving it with a name ending in `_spots.csv`.
 2. Export the **tracks** table, saving it with a name ending in `_tracks.csv`.
