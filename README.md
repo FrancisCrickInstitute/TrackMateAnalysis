@@ -16,6 +16,25 @@ The analysis is deliberately **not tied to any particular experiment**; it only
 relies on the standard columns TrackMate always writes, so it works with any
 TrackMate export.
 
+## Lessons
+
+The notebook is organised as four short lessons, and it starts from the example
+data that ships in this repository, so you can begin without exporting anything.
+
+1. **Set up and run on the example data** - follow [Setup](#setup), open the
+   notebook, and run it top-to-bottom. It already points at the data in
+   `example_input/`.
+2. **Make new plots from the example data** - use the metric menu and the
+   **Try it yourself** section to plot different quantities, including how a
+   spot's area (a proxy for size) changes over time and how fast that change
+   happens.
+3. **Run on your own TrackMate data** - export CSVs from TrackMate (see
+   [Exporting data from TrackMate](#exporting-data-from-trackmate)) and point
+   `DATA_DIR` at them.
+4. **Use data from other sources** - see
+   [Using data from other sources](#using-data-from-other-sources) for the few
+   column names the notebook needs.
+
 ## Repository contents
 
 | File | Purpose |
@@ -92,19 +111,18 @@ SETTINGS** cell to that folder (for example `/content/`).
 
 ## Your first analysis (5 minutes)
 
-1. Export your TrackMate tables as CSVs (see
-   [Exporting data from TrackMate](#exporting-data-from-trackmate)) and put
-   them in a folder.
-2. Open `trackmate_analysis_intro.ipynb` and, in the **YOUR SETTINGS** cell near
-   the top, set `DATA_DIR` to that folder.
-3. Run the notebook top-to-bottom (**Kernel -> Run All**).
-4. Scroll to the **Try it yourself** section and change the metric name inside a
-   `plot_track_metric(...)` or `scatter_track_metrics(...)` call to explore your
-   data.
+1. Follow [Setup](#setup) to install Python and start Jupyter.
+2. Open `trackmate_analysis_intro.ipynb` and run it top-to-bottom
+   (**Kernel -> Run All**). It already points at the example data in
+   `example_input/`, so no changes are needed.
+3. Scroll to the **Try it yourself** section and change the metric name inside a
+   `plot_track_metric(...)` or `scatter_track_metrics(...)` call to explore the
+   example data.
 
-You only need to edit two things: the **settings** at the top, and the **metric
-names** in the `plot_track_metric(...)` / `scatter_track_metrics(...)` calls.
-The analysis code itself can stay as it is.
+When you are ready to use your own data, export it from TrackMate (see
+[Exporting data from TrackMate](#exporting-data-from-trackmate)) and set
+`DATA_DIR` in the **YOUR SETTINGS** cell to that folder. You only need to edit
+the **settings** and the **metric names**; the analysis code can stay as it is.
 
 ## Exporting data from TrackMate
 
@@ -140,6 +158,27 @@ Two tables are exported:
   `POSITION_X`/`POSITION_Y`/`POSITION_Z`, `FRAME`, `POSITION_T` (time), plus
   channel intensities and shape features when available.
 
+## Using data from other sources
+
+The notebook is written for TrackMate's CSV format, but it only actually needs
+a small set of columns. If your data comes from another tool, reformat it to use
+the same column names and the notebook will work unchanged:
+
+| column | what it is used for |
+|---|---|
+| `TRACK_ID` | grouping detections into tracks |
+| `FRAME` | ordering detections in time |
+| `POSITION_T` | time in seconds |
+| `POSITION_X`, `POSITION_Y` | position (used for speed and MSD) |
+
+Anything else you want to plot (for example `AREA`, `CIRCULARITY`, or an
+intensity column) can be included as long as you keep the column name.
+
+The simplest approach is to write a small loader that reads your file with a
+plain `pandas.read_csv(...)` and renames its columns to the names above, instead
+of using the `read_trackmate_csv` helper (which expects TrackMate's four header
+rows).
+
 ## Notebook overview
 
 The notebook walks through, in order:
@@ -154,7 +193,8 @@ The notebook walks through, in order:
 6. Computing instantaneous speed between consecutive frames.
 7. Computing mean-squared displacement (MSD) per track.
 8. Exploring per-spot shape features such as area and circularity.
-9. A "Try it yourself" section with ready-to-edit examples.
+9. Tracking how a spot's area (size) changes over time and how fast it changes.
+10. A "Try it yourself" section with ready-to-edit examples.
 
 Each section builds a reusable function (e.g. `read_trackmate_csv`,
 `track_msd`, `plot_track_metric`) that you can copy into your own analysis.
