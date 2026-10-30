@@ -55,6 +55,22 @@ The notebook needs `pandas`, `numpy`, `matplotlib`, `seaborn` and `jupyter`.
 Both setup methods below install these for you, so you do not need to install
 them by hand.
 
+## Get the code
+
+1. Download the repository as a ZIP archive: on the GitHub page click the green
+   **Code** button, then **Download ZIP**.
+2. Unzip the archive (for example into your home folder or on your Desktop).
+3. Open a terminal and move into the unzipped folder:
+
+   ```sh
+   cd TrackMateAnalysis-main
+   ```
+
+   If you unzipped it elsewhere, replace `TrackMateAnalysis-main` with the full
+   path to that folder.
+
+All of the commands in [Setup](#setup) below are run from inside this folder.
+
 ## Setup
 
 ### With Miniconda (recommended)
