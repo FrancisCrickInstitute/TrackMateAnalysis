@@ -1,6 +1,6 @@
 # TrackMateAnalysis
 
-[![Python 3.14](https://img.shields.io/badge/python-3.14-blue.svg)](https://www.python.org/downloads/) [![Built with Pixi](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json)](https://pixi.sh) ![Commit activity](https://img.shields.io/github/commit-activity/y/FrancisCrickInstitute/TrackMateAnalysis?style=plastic) ![GitHub](https://img.shields.io/github/license/FrancisCrickInstitute/TrackMateAnalysis?color=green&style=plastic) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FrancisCrickInstitute/TrackMateAnalysis/main?urlpath=%2Fdoc%2Ftree%2Ftrackmate_analysis_intro.ipynb)
+[![Python 3.14](https://img.shields.io/badge/python-3.14-blue.svg)](https://www.python.org/downloads/) [![Built with Pixi](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json)](https://pixi.sh) ![Commit activity](https://img.shields.io/github/commit-activity/y/FrancisCrickInstitute/TrackMateAnalysis?style=plastic) ![GitHub](https://img.shields.io/github/license/FrancisCrickInstitute/TrackMateAnalysis?color=green&style=plastic) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FrancisCrickInstitute/TrackMateAnalysis/main?urlpath=%2Fdoc%2Ftree%2Ftrackmate_analysis_intro.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FrancisCrickInstitute/TrackMateAnalysis/blob/main/trackmate_analysis_intro.ipynb)
 
 A gentle, **generic** introduction to analysing the output of a
 [TrackMate](https://imagej.net/plugins/trackmate/) tracking run with Python and
@@ -25,16 +25,31 @@ TrackMate export.
 
 ## Prerequisites
 
-- [pixi](https://pixi.sh/latest/#installation) **or**
-  [conda](https://docs.conda.io/en/latest/miniconda.html) (either manages
-  Python and the packages below)
-- A TrackMate export (see [Exporting data from TrackMate](#exporting-data-from-trackmate))
+- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (recommended)
+  **or** [pixi](https://pixi.sh/latest/#installation) - either manages Python
+  and the packages below
+- TrackMate CSV exports (see
+  [Exporting data from TrackMate](#exporting-data-from-trackmate)). The notebook
+  expects TrackMate's CSV format, not arbitrary CSVs.
 
 The notebook needs `pandas`, `numpy`, `matplotlib`, `seaborn` and `jupyter`.
 Both setup methods below install these for you, so you do not need to install
 them by hand.
 
 ## Setup
+
+### With Miniconda (recommended)
+
+Create and activate an environment, then launch Jupyter Lab:
+
+```sh
+conda create -n trackmate-analysis -c conda-forge python=3.14 pandas numpy matplotlib seaborn jupyterlab
+conda activate trackmate-analysis
+jupyter lab
+```
+
+Then open `trackmate_analysis_intro.ipynb` and select the kernel for your
+`trackmate-analysis` environment.
 
 ### With pixi
 
@@ -47,19 +62,6 @@ pixi run jupyter  # start Jupyter Lab
 
 Then open `trackmate_analysis_intro.ipynb` and select the `trackmate-analysis`
 kernel.
-
-### With conda
-
-Create and activate an environment, then launch Jupyter Lab:
-
-```sh
-conda create -n trackmate-analysis -c conda-forge python=3.14 pandas numpy matplotlib seaborn jupyterlab
-conda activate trackmate-analysis
-jupyter lab
-```
-
-Then open `trackmate_analysis_intro.ipynb` and select the kernel for your
-`trackmate-analysis` environment.
 
 ## Try it with Binder
 
@@ -76,6 +78,17 @@ already present.
 Binder is great for quickly trying the tutorial, but for your own data you will
 still want a local environment (see [Setup](#setup)) so you can point the
 notebook at your own TrackMate exports.
+
+## Try it in Google Colab
+
+[Google Colab](https://colab.research.google.com/) runs the notebook for free in
+your browser with no local install. Click the **Open In Colab** badge at the top
+of this page.
+
+Colab does not include the example CSVs, so the notebook downloads them
+automatically the first time it runs. To use your own data instead, upload your
+TrackMate CSVs in Colab's file browser, then set `DATA_DIR` in the **YOUR
+SETTINGS** cell to that folder (for example `/content/`).
 
 ## Your first analysis (5 minutes)
 
